@@ -3,6 +3,8 @@ package jd;
 import org.testng.annotations.*;
 import org.testng.ITestContext;
 
+import org.openqa.selenium.server.*;
+
 /**
  * Unit test for simple App.
  */
@@ -31,10 +33,10 @@ public class AppTest
 		selenium = new DefaultSelenium(proc);
 		selenium.start();
 	}
-}
 
-//@AfterSuite(alwaysRun=true)
-//public void setupAfterSuite(){
-	//selenium.stop();
-	//server.stop();
-//}
+	@AfterSuite(alwaysRun=true)
+	public void setupAfterSuite(){
+		selenium.stop();
+		server.stop();
+	}
+}
