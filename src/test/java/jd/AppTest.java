@@ -1,6 +1,11 @@
 package jd;
 
 import org.testng.annotations.Test;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.util.Enumeration;
+import java.io.*;
+
 
 /**
  * Unit test for simple App.
@@ -29,5 +34,25 @@ public class AppTest
         }
     }
 
+	@Test
+	public void testProperties(){
+		Properties p = new Properties();
+		try {
+			p.load(new FileInputStream("src/test/resources/test.properties"));
+			Enumeration enu = p.propertyNames();
+
+			while(enu.hasMoreElements()) {
+				String k = (String) enu.nextElement();
+				String v = (String) p.getProperty(k);
+				System.out.println("key: "+k+"; v: "+v);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+
+		System.out.println(new File(".").getAbsolutePath());
+	}
 }
 

@@ -1,5 +1,7 @@
 package jd;
 
+import java.util.Properties;
+
 import jd.Employee;
 
 
@@ -28,6 +30,9 @@ public class App
         for (Employee e : staff){
             System.out.println("name = "+e.getName()+", salary = "+e.getSalary());
         }
+
+		Properties p = System.getProperties();
+		p.list(System.out);
      }
 
 }
