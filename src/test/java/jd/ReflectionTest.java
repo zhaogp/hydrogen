@@ -15,6 +15,10 @@ public class ReflectionTest {
             String name = "jd.Manager";
             Class cl = Class.forName(name);
             Class superCl = cl.getSuperclass();
+
+            String modifiers = Modifier.toString(cl.getModifiers());
+            System.out.println("modifiers: " + modifiers);
+
             System.out.print("class " + cl.getName());
             if (superCl != null && superCl != Object.class)
                 System.out.print(" extends "+superCl.getName());
