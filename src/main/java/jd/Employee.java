@@ -1,8 +1,12 @@
 package jd;
 
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class Employee{
+public class Employee implements Comparable<Employee>,
+        Comparator<String>, Cloneable {
     /**
      * The employee name, salary and hireDay
      */
@@ -40,4 +44,17 @@ public class Employee{
         return raise;
     }
 
+    public int compareTo(Employee other){
+        return Double.compare(salary, other.salary);
+    }
+
+
+    public int compare(String o1, String o2) {
+        return o1.length() - o2.length();
+    }
+
+    public Employee clone() throws CloneNotSupportedException{
+        Employee cloned = (Employee)super.clone();
+        return cloned;
+    }
 }

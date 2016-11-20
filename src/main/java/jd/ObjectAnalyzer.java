@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by zhaogp on 2016/11/17.
@@ -62,5 +63,23 @@ public class ObjectAnalyzer {
         }
         while (cl!=null);
         return ss;
+    }
+
+    public static Object[] badCopyOf(Object[] o, int newLength){
+        Object[] newArray = new Object[newLength];
+        System.arraycopy(o, 0, newArray, 0, Math.min(o.length, newLength));
+        return newArray;
+    }
+
+    public static Object goodCopyOf(Object o, int newLength){
+        Class cl = o.getClass();
+        if(!cl.isArray())
+            return null;
+        Class componentType = cl.getComponentType();
+        int length = Array.getLength(o);
+        Object newArray = Array.newInstance(componentType, newLength);
+        System.arraycopy(o, 0, newArray, 0, Math.min(length, newLength));
+        return newArray;
+
     }
 }

@@ -1,11 +1,16 @@
 package jd;
 
 import org.testng.annotations.Test;
+
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.util.Enumeration;
 import java.io.*;
-
+import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  * Unit test for simple App.
@@ -32,6 +37,12 @@ public class AppTest
         for (Employee e : staff){
             System.out.println("name = "+e.getName()+", salary = "+e.getSalary());
         }
+
+        Arrays.sort(staff);
+        for (Employee e: staff){
+            System.out.println(e.getName()+" salary "+e.getSalary());
+        }
+
     }
 
 	@Test
@@ -43,7 +54,7 @@ public class AppTest
 
 			while(enu.hasMoreElements()) {
 				String k = (String) enu.nextElement();
-				String v = (String) p.getProperty(k);
+				String v = p.getProperty(k);
 				System.out.println("key: "+k+"; v: "+v);
 			}
 		} catch (FileNotFoundException e) {
@@ -52,5 +63,48 @@ public class AppTest
 			e.printStackTrace();
 		}
 	}
+
+    @Test
+    public void testTimer(){
+        ActionListener al = new TimePrinter();
+        Timer t = new Timer(3000, al);
+        t.start();
+
+        JOptionPane.showMessageDialog(null, "quit?");
+        System.exit(0);
+    }
+
+    @Test
+    public void testClone(){
+        try{
+            Employee cui = new Employee("junling", 100.1, 2014, 3, 5);
+            Employee copy = cui.clone();
+            copy.raiseSalary(30);
+            System.out.println("cui's salary is :" + cui.getSalary());
+            System.out.println("copy's salary is :" + copy.getSalary());
+
+        }catch (CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testLambda(){
+        String[] children = {"xiaoyu", "xinyao", "zhenjiang", "zhenhua", "nana"};
+        System.out.println("Before sort is: "+Arrays.toString(children));
+        System.out.println("sorted by length:");
+        Arrays.sort(children, (first, second) -> first.length() - second.length());
+        System.out.println(Arrays.toString(children));
+    }
+
+    @Test
+    public void testInnerClass(){
+        TalkingClock clock = new TalkingClock(2000, true);
+        clock.start();
+
+        JOptionPane.showMessageDialog(null, "inner quit ?");
+        System.exit(0);
+    }
+
 }
 
