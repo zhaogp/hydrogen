@@ -1,4 +1,4 @@
-package jd;
+package gp;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,13 +1,12 @@
-package jd;
+package gp;
 
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 import java.lang.reflect.*;
 
-import static jd.ObjectAnalyzer.*;
+import static gp.ObjectAnalyzer.*;
 
 /**
  * Created by zhaogp on 2016/11/15.
@@ -17,7 +16,7 @@ public class ReflectionTest {
     @Test
     public void testClassName(){
         try{
-            String name = "jd.Manager";
+            String name = "gp.Manager";
             Class cl = Class.forName(name);
             Class superCl = cl.getSuperclass();
 
@@ -53,7 +52,7 @@ public class ReflectionTest {
         System.out.println(Arrays.toString(b));
 
     }
-    @Test
+    @Test(enabled = false)
     public void testBadCopy(){
         int[] i = {1, 3};
         String[] s = {"sam", "duncon"};

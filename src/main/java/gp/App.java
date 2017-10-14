@@ -1,9 +1,6 @@
-package jd;
+package gp;
 
-import java.util.Properties;
 import java.util.Scanner;
-
-import jd.Employee;
 
 
 /**

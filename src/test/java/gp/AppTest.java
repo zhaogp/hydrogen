@@ -1,9 +1,7 @@
-package jd;
+package gp;
 
 import org.testng.annotations.Test;
-
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Properties;
 import java.io.FileInputStream;
@@ -64,7 +62,7 @@ public class AppTest
 		}
 	}
 
-    @Test
+    @Test(enabled = false)
     public void testTimer(){
         ActionListener al = new TimePrinter();
         Timer t = new Timer(3000, al);
@@ -97,7 +95,7 @@ public class AppTest
         System.out.println(Arrays.toString(children));
     }
 
-    @Test
+    @Test(enabled = false)
     public void testInnerClass(){
         TalkingClock clock = new TalkingClock(2000, true);
         clock.start();
