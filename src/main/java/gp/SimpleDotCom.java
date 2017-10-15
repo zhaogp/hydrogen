@@ -9,6 +9,7 @@ public class SimpleDotCom {
     private int[] locationCells;
     private int numOfHits = 0;
 
+
     void setLocationCells(int[] cells){
         logger.info("Set locations for " + Arrays.toString(cells));
         locationCells = cells;

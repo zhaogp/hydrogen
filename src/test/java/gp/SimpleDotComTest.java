@@ -4,9 +4,6 @@ import org.testng.annotations.Test;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.Arrays;
-
-
 public class SimpleDotComTest {
     public static final Logger logger = LogManager.getLogger(SimpleDotComTest.class);
 
