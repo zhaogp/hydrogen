@@ -3,6 +3,8 @@ package gp;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+import java.util.ArrayList;
+
 public class SimpleDotComGame {
     public static final Logger logger = LogManager.getLogger();
 
@@ -10,7 +12,10 @@ public class SimpleDotComGame {
         SimpleDotCom sdc = new SimpleDotCom();
         // Generate a random int number range(0,5)
         int random = (int) (Math.random() * 5);
-        int[] cells = {random, random+1, random+2};
+        ArrayList<Integer> cells = new ArrayList<>();
+        for (int i=0;i<3;i++){
+            cells.add(random+i);
+        }
         sdc.setLocationCells(cells);
 
         // Get user input

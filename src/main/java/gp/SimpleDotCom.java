@@ -2,34 +2,27 @@ package gp;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
-import java.util.Arrays;
+
+import java.util.ArrayList;
 
 public class SimpleDotCom {
-    public static final Logger logger = LogManager.getLogger(SimpleDotCom.class);
-    private int[] locationCells;
-    private int numOfHits = 0;
+    private static final Logger logger = LogManager.getLogger(SimpleDotCom.class);
+    private ArrayList<Integer> locationCells;
 
-
-    void setLocationCells(int[] cells){
-        logger.info("Set locations for " + Arrays.toString(cells));
+    void setLocationCells(ArrayList<Integer> cells){
+        logger.info("Set locations for " + cells.toString());
         locationCells = cells;
-
     }
     String checkGuess(String stringGuess){
         logger.info("Your guess is " + stringGuess);
-        int guess = Integer.parseInt(stringGuess);
+        Integer guess = Integer.parseInt(stringGuess);
         String result = "miss";
-        for(int cell: locationCells){
-            if(cell == guess){
-                result = "hit";
-//                logger.info("hit");
-                numOfHits ++;
-                break;
+        if(locationCells.indexOf(guess) != -1){
+            result = "hit";
+            locationCells.remove(guess);
+            if (locationCells.isEmpty()){
+                result = "kill";
             }
-        }
-        if (numOfHits == locationCells.length){
-//            logger.info("kill");
-            result = "kill";
         }
         logger.info(result);
         return result;
