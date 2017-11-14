@@ -7,11 +7,15 @@ import java.util.ArrayList;
 
 public class SimpleDotCom {
     private static final Logger logger = LogManager.getLogger(SimpleDotCom.class);
-    private ArrayList<Integer> locationCells;
+    private ArrayList<String> locationCells;
+    private String companyName;
 
-    void setLocationCells(ArrayList<Integer> cells){
-        logger.info("Set locations for " + cells.toString());
+    public SimpleDotCom(String name, ArrayList<String> cells){
         locationCells = cells;
+        companyName = name;
+    }
+    public String getCompanyName(){
+        return companyName;
     }
     String checkGuess(String stringGuess){
         logger.info("Your guess is " + stringGuess);
@@ -27,5 +31,4 @@ public class SimpleDotCom {
         logger.info(result);
         return result;
     }
-
 }

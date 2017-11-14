@@ -6,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import java.util.ArrayList;
 
 public class SimpleDotComGame {
-    public static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public static void main(String[] args){
         SimpleDotCom sdc = new SimpleDotCom();
@@ -24,7 +24,7 @@ public class SimpleDotComGame {
         int guessTimes = 0;
         while (!guessResult.equals("kill")){
             guessTimes += 1;
-            String in = gh.getUserInput("Please input an integer: ");
+            String in = gh.getUserInput();
             guessResult = sdc.checkGuess(in);
         }
         logger.info("Use " + guessTimes + " for guessing");
