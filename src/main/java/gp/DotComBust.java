@@ -8,36 +8,44 @@ public class DotComBust {
     private static final Logger logger = LogManager.getLogger();
     private GameHelper gh = new GameHelper();
     private ArrayList<SimpleDotCom> dotComList = new ArrayList<>();
+    private int guessNumber;
 
-    ArrayList<String> getRandomCells1(){
-        ArrayList<String> cells = new ArrayList<>();
-        cells.add("B2");
-        cells.add("B3");
-        cells.add("B4");
-        return cells;
+    public static void main(String [] args){
+        DotComBust dotComBust = new DotComBust();
+        dotComBust.setUpGame();
+        dotComBust.startPlaying();
     }
-    ArrayList<String> getRandomCells2(){
-        ArrayList<String> cells = new ArrayList<>();
-        cells.add("E4");
-        cells.add("B5");
-        cells.add("B6");
-        return cells;
-    }
-    ArrayList<String> getRandomCells3(){
-        ArrayList<String> cells = new ArrayList<>();
-        cells.add("C0");
-        cells.add("D0");
-        cells.add("E0");
-        return cells;
-    }
-    public void setUpGame(){
+    private void setUpGame(){
         //Get company name and locations
-        SimpleDotCom sdc1 = new SimpleDotCom("jingdong", getRandomCells1());
-        SimpleDotCom sdc2 = new SimpleDotCom("alibaba", getRandomCells2());
-        SimpleDotCom sdc3 = new SimpleDotCom("amazon", getRandomCells3());
-
-        dotComList.add(sdc1);
-        dotComList.add(sdc2);
-        dotComList.add(sdc3);
+        for (int i=0; i<3; i++){
+            SimpleDotCom sdc = new SimpleDotCom();
+            logger.info("Input a  company: ");
+            sdc.setCompanyName(gh.getUserInput());
+            sdc.setLocationCells(gh.placeDotCom(3));
+            sdc.printCompanyName();
+            sdc.printLocationCells();
+            dotComList.add(sdc);
         }
+    }
+    void startPlaying(){
+        logger.info("Start playing ...");
+        String guess;
+        String guessResult;
+        while (dotComList.size() > 0){
+            guess = gh.getUserInput();
+            guessNumber++;
+            for (SimpleDotCom com:dotComList){
+                guessResult = com.checkGuess(guess);
+                if (guessResult.equals("hit")){
+                    break;
+                }
+                if (guessResult.equals("kill")){
+                    dotComList.remove(com);
+                    break;
+                }
+            }
+        }
+        logger.info("Your guess number is " + guessNumber);
+        logger.info("Game over!");
+    }
 }

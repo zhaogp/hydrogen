@@ -10,22 +10,28 @@ public class SimpleDotCom {
     private ArrayList<String> locationCells;
     private String companyName;
 
-    public SimpleDotCom(String name, ArrayList<String> cells){
-        locationCells = cells;
-        companyName = name;
+    void setCompanyName(String s){
+        companyName = s;
     }
-    public String getCompanyName(){
-        return companyName;
+    void setLocationCells(ArrayList<String> cells){
+        locationCells = cells;
+    }
+    void printCompanyName(){
+        logger.info("Name: " + companyName);
+    }
+    void printLocationCells(){
+        logger.info("location: " + locationCells);
     }
     String checkGuess(String stringGuess){
         logger.info("Your guess is " + stringGuess);
-        Integer guess = Integer.parseInt(stringGuess);
+        int index = locationCells.indexOf(stringGuess);
         String result = "miss";
-        if(locationCells.indexOf(guess) != -1){
+        if(index != -1){
             result = "hit";
-            locationCells.remove(guess);
+            locationCells.remove(index);
             if (locationCells.isEmpty()){
                 result = "kill";
+                logger.info("You sunk " + companyName);
             }
         }
         logger.info(result);
