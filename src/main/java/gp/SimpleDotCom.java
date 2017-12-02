@@ -10,20 +10,30 @@ public class SimpleDotCom {
     private ArrayList<String> locationCells;
     private String companyName;
 
-    void setCompanyName(String s){
-        companyName = s;
+    public SimpleDotCom(){
+        this("JD.com");
     }
-    void setLocationCells(ArrayList<String> cells){
-        locationCells = cells;
+    public SimpleDotCom(String name){
+        companyName = name;
     }
-    void printCompanyName(){
-        logger.info("Name: " + companyName);
+    public SimpleDotCom(String name, ArrayList<String> location){
+        companyName = name;
+        locationCells = location;
+        logger.info(companyName + ": " + locationCells.toString());
     }
-    void printLocationCells(){
-        logger.info("location: " + locationCells);
+
+//    void setCompanyName(String s){
+//        companyName = s;
+//    }
+//    void setLocationCells(ArrayList<String> cells){
+//        locationCells = cells;
+//    }
+    String getCompanyName(){
+//        logger.info(companyName);
+        return companyName;
     }
     String checkGuess(String stringGuess){
-        logger.info("Your guess is " + stringGuess);
+        logger.debug("Your guess is " + stringGuess);
         int index = locationCells.indexOf(stringGuess);
         String result = "miss";
         if(index != -1){
@@ -31,10 +41,10 @@ public class SimpleDotCom {
             locationCells.remove(index);
             if (locationCells.isEmpty()){
                 result = "kill";
-                logger.info("You sunk " + companyName);
+                logger.debug("You sunk " + companyName);
             }
         }
-        logger.info(result);
+        logger.debug(result);
         return result;
     }
 }

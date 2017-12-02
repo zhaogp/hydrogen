@@ -18,31 +18,35 @@ public class DotComBust {
     private void setUpGame(){
         //Get company name and locations
         for (int i=0; i<3; i++){
-            SimpleDotCom sdc = new SimpleDotCom();
             logger.info("Input a  company: ");
-            sdc.setCompanyName(gh.getUserInput());
-            sdc.setLocationCells(gh.placeDotCom(3));
-            sdc.printCompanyName();
-            sdc.printLocationCells();
-            dotComList.add(sdc);
+            dotComList.add(new SimpleDotCom(gh.getUserInput(), gh.placeDotCom(3)));
         }
     }
-    void startPlaying(){
+    private void startPlaying(){
         logger.info("Start playing ...");
         String guess;
-        String guessResult;
+        String guessResult = "miss";
+        String companyName;
         while (dotComList.size() > 0){
+            logger.info("Please input your guess ");
             guess = gh.getUserInput();
             guessNumber++;
             for (SimpleDotCom com:dotComList){
+                companyName = com.getCompanyName();
+                logger.debug(companyName);
                 guessResult = com.checkGuess(guess);
                 if (guessResult.equals("hit")){
+                    logger.info("Hit " + companyName);
                     break;
                 }
                 if (guessResult.equals("kill")){
                     dotComList.remove(com);
+                    logger.info("kill " + companyName + ", There still has " + dotComList.size() + " company");
                     break;
                 }
+            }
+            if (guessResult.equals("miss")){
+                logger.info("This guess miss, try again");
             }
         }
         logger.info("Your guess number is " + guessNumber);

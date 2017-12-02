@@ -9,11 +9,11 @@
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="gp.SimpleDotCom" level="debug" additivity="false">
+        <Logger name="gp.SimpleDotCom" level="info" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>
-        <Root level="debug">
+        <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>

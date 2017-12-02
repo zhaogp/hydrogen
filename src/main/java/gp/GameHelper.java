@@ -48,7 +48,7 @@ class GameHelper {
         }
         while ( !success & attempts++ < 200 ) { // main search loop (32)
             location = (int) (Math.random() * gridSize); // get random starting point
-            logger.info(" Starting point: " + location);
+            logger.debug(" Starting point: " + location);
             int x = 0; // nth position in dotcom to place
             success = true; // assume success
             while (success && x < comSize) { // look for adjacent unused spots
@@ -62,7 +62,7 @@ class GameHelper {
                         success = false; // failure
                     }
                 } else { // found already used location
-                    logger.info("used " + location);
+                    logger.debug("used " + location);
                     success = false; // failure
                 }
             }
@@ -79,7 +79,7 @@ class GameHelper {
 
             alphaCells.add(temp.concat(Integer.toString(row)));
             x++;
-             logger.info("coord"+x+" = "+ alphaCells.get(x-1));
+             logger.debug("coord"+x+" = "+ alphaCells.get(x-1));
         }
 
         return alphaCells;
