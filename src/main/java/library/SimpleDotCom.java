@@ -1,4 +1,4 @@
-package gp;
+package library;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
