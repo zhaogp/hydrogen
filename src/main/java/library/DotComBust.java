@@ -17,18 +17,20 @@ public class DotComBust {
     }
     private void setUpGame(){
         //Get company name and locations
-        for (int i=0; i<3; i++){
-            logger.info("Input a  company: ");
+        System.out.print("How many company will you sink？");
+        int companyCount = Integer.parseInt(gh.getUserInput());
+        for (int i=0; i<companyCount; i++){
+            System.out.print("Input a name of company: ");
             dotComList.add(new SimpleDotCom(gh.getUserInput(), gh.placeDotCom(3)));
         }
     }
     private void startPlaying(){
-        logger.info("Start playing ...");
+        System.out.println("Start playing ...");
         String guess;
         String guessResult = "miss";
         String companyName;
         while (dotComList.size() > 0){
-            logger.info("Please input your guess ");
+            System.out.print("Please input your guess: ");
             guess = gh.getUserInput();
             guessNumber++;
             for (SimpleDotCom com:dotComList){
@@ -36,20 +38,20 @@ public class DotComBust {
                 logger.debug(companyName);
                 guessResult = com.checkGuess(guess);
                 if (guessResult.equals("hit")){
-                    logger.info("Hit " + companyName);
+                    System.out.println("Hit " + companyName);
                     break;
                 }
                 if (guessResult.equals("kill")){
                     dotComList.remove(com);
-                    logger.info("kill " + companyName + ", There still has " + dotComList.size() + " company");
+                    System.out.println("kill " + companyName + ", There still has " + dotComList.size() + " company");
                     break;
                 }
             }
             if (guessResult.equals("miss")){
-                logger.info("This guess miss, try again");
+                System.out.print("This guess miss, try again. ");
             }
         }
-        logger.info("Your guess number is " + guessNumber);
-        logger.info("Game over!");
+        System.out.println("Your guess number is " + guessNumber);
+        System.out.println("Game over!");
     }
 }

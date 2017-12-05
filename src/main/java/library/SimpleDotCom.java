@@ -19,7 +19,7 @@ public class SimpleDotCom {
     public SimpleDotCom(String name, ArrayList<String> location){
         companyName = name;
         locationCells = location;
-        logger.info(companyName + ": " + locationCells.toString());
+        System.out.println(companyName + ": " + locationCells.toString());
     }
 
 //    void setCompanyName(String s){
