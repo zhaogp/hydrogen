@@ -1,13 +1,15 @@
 package rmi;
 
-import java.rmi.*;
-import java.rmi.server.*;
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.RemoteException;
 
 
-public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote {
+public class MyRemoteImpl implements MyRemote {
 
 	public String sayHello(){
-		String s = "rmi sayHello()";
+		String s = "I am coming from remote server";
 		System.out.println(s);
 		return s;
 	}
@@ -18,8 +20,13 @@ public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote {
 	public static void main(String[] args){
 		try{
 			MyRemote service = new MyRemoteImpl();
-			Naming.rebind("Remote Hello", service);
+			MyRemote stub = (MyRemote) UnicastRemoteObject.exportObject(service, 0);			
+
+			// Bind the remote object's stub in the registry
+			Registry registry = LocateRegistry.getRegistry();
+			registry.bind("MyRemoteRegister", stub);
 		} catch (Exception ex){
+			System.err.println("Server exception: " + ex.toString());
 			ex.printStackTrace();
 		}
 	}
