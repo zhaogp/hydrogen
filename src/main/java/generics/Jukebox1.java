@@ -16,6 +16,19 @@ public class Jukebox1 {
 		System.out.println("Sorted by title: " + box.songList);
 		Collections.sort(box.songList, new SongComparator());
 		System.out.println("Sorted by artist: " + box.songList);
+
+		HashSet<Song> songSet = new HashSet<>();
+		songSet.addAll(box.songList);
+		System.out.println("In HashSet: " + songSet);
+		
+		TreeSet<Song> songTreeSet = new TreeSet<>();
+		songTreeSet.addAll(box.songList);
+		System.out.println("In TreeSet: " + songTreeSet);
+	
+		// TreeSet with comparator
+		TreeSet<Song> songTreeSet2 = new TreeSet<>(new SongComparator());
+		songTreeSet2.addAll(box.songList);
+		System.out.println("In TreeSet with comparator: " + songTreeSet2);
 	}
 
 	void readSongs(){

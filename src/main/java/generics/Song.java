@@ -28,4 +28,13 @@ public class Song implements Comparable<Song> {
 	public int compareTo(Song s){
 		return title.compareTo(s.getTitle());	
 	}
+
+	public int hashCode(){
+		return title.hashCode();
+	}
+
+	public boolean equals(Object o){
+		Song s = (Song) o;
+		return this.getTitle().equals(s.getTitle());
+	}
 }
