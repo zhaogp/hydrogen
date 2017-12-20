@@ -14,18 +14,42 @@
   <name>myweb Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.beans</artifactId>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.context</artifactId>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.web</artifactId>
-	</dependency>
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.beans</groupId>-->
+	  <!--<artifactId>org.springframework.beans</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.context</groupId>-->
+	  <!--<artifactId>org.springframework.context</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.web</groupId>-->
+	  <!--<artifactId>org.springframework.web</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.core</groupId>-->
+	  <!--<artifactId>org.springframework.core</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>commons-logging</groupId>-->
+	  <!--<artifactId>commons-logging</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+    <!--<groupId>org.springframework.asm</groupId>-->
+    <!--<artifactId>org.springframework.asm</artifactId>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+    <!--<groupId>org.springframework.expression</groupId>-->
+    <!--<artifactId>org.springframework.expression</artifactId>-->
+	<!--</dependency>-->
+<dependency>
+ <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+</dependency>
+<dependency>
+ <groupId>org.springframework</groupId>
+  <artifactId>spring-webmvc</artifactId>
+</dependency>
   </dependencies>
   <build>
     <finalName>myweb</finalName>

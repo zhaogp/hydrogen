@@ -19,7 +19,7 @@ public class HomeController{
 		myBean = mb;
 	}
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String home(){
 		System.out.println("MyBean hashcode=" + myBean.hashCode());
 		return "home";

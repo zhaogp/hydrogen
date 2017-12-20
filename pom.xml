@@ -33,21 +33,51 @@
 		<artifactId>log4j-core</artifactId>
 		<version>2.9.1</version>
 	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.beans</artifactId>
-		<version>3.0.7.RELEASE</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.context</artifactId>
-		<version>3.0.7.RELEASE</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.springframework</groupId>
-	  <artifactId>org.springframework.web</artifactId>
-		<version>3.0.7.RELEASE</version>
-	</dependency>
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.beans</groupId>-->
+	  <!--<artifactId>org.springframework.beans</artifactId>-->
+		<!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.context</groupId>-->
+	  <!--<artifactId>org.springframework.context</artifactId>-->
+		<!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.web</groupId>-->
+	  <!--<artifactId>org.springframework.web</artifactId>-->
+		<!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>org.springframework.core</groupId>-->
+	  <!--<artifactId>org.springframework.core</artifactId>-->
+		<!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+	  <!--<groupId>commons-logging</groupId>-->
+	  <!--<artifactId>commons-logging</artifactId>-->
+		<!--<version>1.1.1</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+    <!--<groupId>org.springframework.asm</groupId>-->
+    <!--<artifactId>org.springframework.asm</artifactId>-->
+    <!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+	<!--<dependency>-->
+    <!--<groupId>org.springframework.expression</groupId>-->
+    <!--<artifactId>org.springframework.expression</artifactId>-->
+    <!--<version>3.0.7.RELEASE</version>-->
+	<!--</dependency>-->
+<dependency>
+ <groupId>org.springframework</groupId>
+  <artifactId>spring-context</artifactId>
+   <version>4.3.9.RELEASE</version>
+</dependency>
+<dependency>
+ <groupId>org.springframework</groupId>
+  <artifactId>spring-webmvc</artifactId>
+   <version>4.3.9.RELEASE</version>
+</dependency>
     </dependencies>
 	</dependencyManagement>
 
