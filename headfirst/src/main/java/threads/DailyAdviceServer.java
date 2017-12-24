@@ -11,20 +11,24 @@ class DailyAdviceServer{
 	"Just for today, be honest. Tell your boss what you *really* think", 
 	"You might want to rethink that haircut."
 	};
+	ServerSocket serverSock;
+
 	public static void main(String[] args){
 		DailyAdviceServer server = new DailyAdviceServer();
 		server.go();
 	}
 	
 	public void go(){
+
 		try{
-			ServerSocket serverSock = new ServerSocket(4242);
-			
-			while(true){
-				Socket sock = serverSock.accept();
-				Thread t = new Thread(new ClientHandler(sock));
-				t.start();	
-			}
+			serverSock = new ServerSocket(4242);
+			ClientHandler clientHandler = new ClientHandler();
+			Thread t1 = new Thread(clientHandler);
+			t1.setName("kailide");
+			t1.start();
+			Thread t2 = new Thread(clientHandler);
+			t2.setName("jingdong");
+			t2.start();
 		}catch (IOException ex){
 			ex.printStackTrace();
 		}
@@ -36,22 +40,25 @@ class DailyAdviceServer{
 	}
 
 	class ClientHandler implements Runnable {
-		private Socket socket;
-		
-		public ClientHandler(Socket s){
-			socket = s;
-		}
 		
 		public void run(){
 			String threadName = Thread.currentThread().getName();
-			try{
-				PrintWriter writer = new PrintWriter(socket.getOutputStream());
-				String advice = getAdvice();
-				writer.println(threadName + ": " + advice);
-				writer.close();
-				System.out.println(threadName + ": " + advice);
-			}catch(IOException ex){
-				ex.printStackTrace();
+			System.out.println(threadName + " start");
+			while(true){
+				try{
+					Socket sock = serverSock.accept();
+					PrintWriter writer = new PrintWriter(sock.getOutputStream());
+					String advice = getAdvice();
+					writer.println(threadName + ": " + advice);
+					writer.close();
+					System.out.println(threadName + ": " + advice);
+					Thread.sleep(1000);
+				}catch(IOException ex){
+					ex.printStackTrace();
+				}
+				catch (InterruptedException ex){
+					ex.printStackTrace();
+				}
 			}
 		}
 	}
