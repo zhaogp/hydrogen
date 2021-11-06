@@ -6,6 +6,13 @@ public class Song implements Comparable<Song> {
 	String rating;
 	String bpm;
 
+	public static void main(String[] args){
+		System.out.println("Hello World!!!");
+		Song s1 = new Song("Olympics", "liuhuan", "1022", "100");
+		Song s2 = new Song("Country", "caiguoqing", "1000", "100");
+		System.out.println(s1.equals(s2));
+	}
+
 	public Song(String t, String a, String r, String b){
 		title = t;
 		artist = a;
